@@ -1,7 +1,7 @@
 import badger2040w
 import badger2040w as badger2040
 from badger2040w import WIDTH
-import c_webserver
+#import c_webserver
 #import led
 #import a_inputtext
 #from a_setroom_file import setroom
@@ -38,6 +38,9 @@ display.update()
 f = open("c_webserver.py")
 exec(f.read())
 f.close()
+
+def stop_script():
+    sys.exit()
 
 # Call halt in a loop, on battery this switches off power.
 # On USB, the app will exit when A+C is pressed because the launcher picks that up.
