@@ -89,7 +89,6 @@ while True:
         cl.close()
         #print('connection closed')
         pass
-
-
-
-
+        f = open("c_textonbadger.py")
+        exec(f.read())
+        f.close()
