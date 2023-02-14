@@ -115,7 +115,7 @@ while True:
                 display.update()
                 
                 #start webserevr again
-                f = open("c_main.py")
+                f = open("c_main2.py")
                 exec(f.read())
                 f.close()
                         
