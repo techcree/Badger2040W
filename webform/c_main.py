@@ -1,15 +1,21 @@
 #TechCree - ssk start mainscript with webserver and webform
+#import libaries for webserver
 import network
 import socket
-import time
 from secret import ssid, password
+#import more needed libs
+import time
+#import led
 
+#import libaries for badger Display
 import badger2040w
 import badger2040w as badger2040
 from badger2040w import WIDTH
-#import led
+
+#import input file
 from c_settext_file import settext
 
+#start webserver with website
 wlan = network.WLAN(network.STA_IF)
 wlan.active(True)
 wlan.connect(ssid, password)
@@ -17,7 +23,7 @@ wlan.connect(ssid, password)
 html = """<!DOCTYPE html>
 <html>
     <head>
-        <title>Raspberry Pi Pico W</title>
+        <title>Badger2040W</title>
     </head>
     <body>
         <h1>Input the Text you like to display!</h1>
