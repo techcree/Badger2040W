@@ -51,7 +51,7 @@ def save_text(text):
         f.write(text)
 
 print('waiting for connection...')
-max_wait = 10
+max_wait = 20 # try to eliminate socket error
 while max_wait > 0:
     if wlan.status() < 0 or wlan.status() >= 3:
         break
@@ -66,7 +66,7 @@ if wlan.status() != 3:
 else:
     print('connected')
     status = wlan.ifconfig()
-    print('ip = ' + status[0])
+    print('got ip = ' + status[0])
 
 addr = socket.getaddrinfo('0.0.0.0', 80)[0][-1]
 
@@ -79,41 +79,42 @@ print('listening on', addr)
 while True:
     try:
         cl, addr = s.accept()
-        print('client connected from', addr)
+        print('client connect with', addr)
         request = cl.recv(1024).decode("utf-8")
         if request.startswith("POST"):
             cl.send("HTTP/1.1 200 OK\r\n\r\n")
             request_body = request.split("\r\n\r\n")[1]
+            
             settext = request_body.split("=")[1]
+            
             save_text("settext = '" + settext + "'")
             cl.send(html)
             
             ### print on Badger
             while True:
-                #TEXT_SIZE
+                #set Textsize
                 LINE_HEIGHT = 20
-
+                
                 display = badger2040w.Badger2040W()
-                #display.led(128)
-
-                # Clear to white
+                
+                # Clear display
                 display.set_pen(15)
                 display.clear()
 
-                #next
+                #next update with new conditions
                 display.set_pen(0)
-
-                TEXT_SIZE_A = 1.50
-                TEXT_SIZE_B = 1.00
-                TEXT_SIZE = 0.96
+                #set textsize and font
+                TEXT_SIZE = 1.00
                 y = 25 + int(LINE_HEIGHT / 3)
-
                 display.set_font("serif")
-
-                display.text(settext, 10, 70, WIDTH, TEXT_SIZE_B)
-
+                
+                #display text
+                display.text(settext, 10, 70, WIDTH, TEXT_SIZE)
+                
+                #update display
                 display.update()
                 
+                #start webserevr again
                 f = open("c_main.py")
                 exec(f.read())
                 f.close()
