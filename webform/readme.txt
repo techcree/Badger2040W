@@ -12,6 +12,6 @@ little waiting time
 if you have made an entry, wait until the browser window is displayed as loaded on the website. as long as it is still loading it will not be possible to make another entry. the script is then interrupted. So pay attention to the update symbol (circle with arrow symbol, next to arrow back and arrow forward symbol)!
 
 Error displaying the space
-if you enter text that consists of several words, such as "hello world", the text may be shown as "hello+world" on the Badgers2040w display.
+If you enter text that consists of several words, e.g. For example, "Hello World", the text may appear as "Hello+World" on the Badgers2040w display.
 
-I am currently still working on solving this problem and there will be an update as soon as possible.
+To fix the error, copy the my_utils.py and expand the entry from my_utils import decode_url in c_webserver.py (see update c_webserver.py 02/18/2023)
