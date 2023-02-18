@@ -1,4 +1,17 @@
-This demoscript still needs some tweaking. in principle, however, it is already possible to start the code that provides the web server and thus also the web form. it can then be reached under the assigned ip. There is an input field (form) available where any text can be entered. after the transfer (enter) it will be shown directly on the Bagder2040W in the display. the idea is then to stop the script on the badger2040w and restart the web server.
+In principle it is possible with this script to start the code that provides the web server and thus also the web form. It can then be reached under the IP address assigned to the Badger2040W by the router in your WLAN. A short web form will be made available to you on the website. An input field in which you can enter any text that is then displayed directly on the Bagder2040W display after the transfer (Enter/Send).
 
-start the process from the c_webserver.py file!
-You also need to moodify your secret.py file with your current WLAN SSID and Password Informations.
+Start the process from the c_webserver.py file! You must first enter your WLAN access data, such as the WLAN SSID and the WLAN password, in the secret.py file! Alternatively, you can of course also adapt the script so that you can use WIFI_CONFIG.py, which may already be available to you as demo code from pimoroni.
+
+Bugfixes ongoing...
+The following error messages have become known in this Version:
+
+s.bind(addr)
+After starting the web server, the web server may not start correctly right away. Then you will get an error message whose line of code contains the entry s.bind(addr). You just have to run the script again and it will work. if necessary, briefly disconnect the Badger2040W from the power supply.
+
+little waiting time
+if you have made an entry, wait until the browser window is displayed as loaded on the website. as long as it is still loading it will not be possible to make another entry. the script is then interrupted. So pay attention to the update symbol (circle with arrow symbol, next to arrow back and arrow forward symbol)!
+
+Error displaying the space
+if you enter text that consists of several words, such as "hello world", the text may be shown as "hello+world" on the Badgers2040w display.
+
+I am currently still working on solving this problem and there will be an update as soon as possible.
